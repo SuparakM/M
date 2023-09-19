@@ -1,0 +1,64 @@
+import java.util.Random;
+import java.util.LinkedList;
+class Tree{
+    private Object info = null;
+    private Tree left = null, right = null;
+    
+    public Tree(Object info, Tree left, Tree right){
+        this.info = info;
+        this.left = left;
+        this.right = right;
+    }
+    public Tree(Object info){
+        this(info,null,null);
+    }
+    public Tree(){
+        this(null,null,null);
+    }
+    public Object getInfo(){
+        return this.info;
+    }
+    public void setInfo(Object info){
+        this.info = info;
+    }
+    public Tree getLeft(){
+        return this.left;
+    }
+    public Tree getRight(){
+        return this.right;
+    }
+    public void setLeft(Tree node){
+        this.left = node;
+    }
+    public void setRight(Tree node){
+        this.right = node;
+    }
+}
+        
+public class BST {
+    public static void printPreOrder(Tree tree){
+        if(tree == null){
+            System.out.print("-");
+            return;
+        }
+        System.out.print(tree.getInfo());
+        System.out.print("[");
+        printPreOrder(tree.getLeft());
+        printPreOrder(tree.getRight());
+        System.out.print("]");
+    }
+    
+    public static void main(String[] args) {
+        Random random = new Random();
+        int n = random.nextInt(11) + 10; // Generate a random number between 10 and 20
+        LinkedList<Integer> numbers = new LinkedList<>();
+
+        System.out.println("--- Random Numbers [" + n + "] ---");
+        for (int i = 0; i < n; i++) {
+            int randomNumber = random.nextInt(101); // Generate a random integer between 0 and 100
+            numbers.add(randomNumber);
+            System.out.print(randomNumber + " ");
+        }
+        System.out.println();
+    }
+}
